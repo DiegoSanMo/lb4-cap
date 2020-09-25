@@ -1,6 +1,22 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, hasOne, model, property} from '@loopback/repository';
+import {Account} from './account.model';
+
 @model({
   settings: {
+
+
+
+    foreignKeys: {
+      accountid: {
+        name: 'accountid',
+        entity: 'Account',
+        entityKey: 'sfid',
+        foreignKey: 'sfid',
+      },
+    },
+
+
+
     postgresql: {
       schema: 'salesforce',
       table: 'contact',
@@ -87,20 +103,6 @@ export class Contact extends Entity {
     },
   })
   LastName?: string;
-
-  @property({
-    type: 'string',
-    postgresql: {
-      columnName: 'accountid',
-      dataType: 'character varying',
-      dataLength: 40,
-      dataPrecision: null,
-      dataScale: null,
-      nullable: 'YES',
-    },
-  })
-  AccountId?: string;
-
   @property({
     type: 'string',
     postgresql: {
@@ -452,6 +454,8 @@ export class Contact extends Entity {
   })
   SfId?: string;
 
+  @hasOne(() => Account, {keyTo: 'sfid'})
+  accountid: Account;
   // @belongsTo(() => Account)
   // accountId: number;
 

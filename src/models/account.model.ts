@@ -477,7 +477,12 @@ export class Account extends Entity {
       nullable: 'YES',
     },
   })
-  SfId?: string;
+  sfid?: string;
+
+  /*@property({
+    type: 'number',
+  })
+  sfid?: number;*/
 
   constructor(data?: Partial<Account>) {
     super(data);
