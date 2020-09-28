@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, hasOne, model, property} from '@loopback/repository';
+import {Account} from './account.model';
+
 @model({
   settings: {
     postgresql: {
@@ -438,6 +440,12 @@ export class Contact extends Entity {
     },
   })
   Description?: string;
+
+  @hasOne(() => Account, {
+    keyTo: 'sfid',
+  })
+  account: Account;
+
 
   @property({
     type: 'string',

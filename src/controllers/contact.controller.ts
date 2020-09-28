@@ -4,17 +4,21 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
-  requestBody,
+
+  requestBody
 } from '@loopback/rest';
 import {Contact} from '../models';
 import {ContactRepository} from '../repositories';
@@ -22,7 +26,7 @@ import {ContactRepository} from '../repositories';
 export class ContactController {
   constructor(
     @repository(ContactRepository)
-    public contactRepository : ContactRepository,
+    public contactRepository: ContactRepository,
   ) {}
 
   @post('/contacts', {
@@ -119,7 +123,7 @@ export class ContactController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(Contact, {exclude: 'where'}) filter?: FilterExcludingWhere<Contact>
   ): Promise<Contact> {
     return this.contactRepository.findById(id, filter);
@@ -133,7 +137,7 @@ export class ContactController {
     },
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -154,7 +158,7 @@ export class ContactController {
     },
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() contact: Contact,
   ): Promise<void> {
     await this.contactRepository.replaceById(id, contact);
@@ -167,7 +171,7 @@ export class ContactController {
       },
     },
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.contactRepository.deleteById(id);
   }
 }

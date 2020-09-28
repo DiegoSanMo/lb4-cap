@@ -475,9 +475,22 @@ export class Account extends Entity {
       dataPrecision: null,
       dataScale: null,
       nullable: 'YES',
+    }
+  })
+  sfid?: number;
+
+  /*@property({
+    type: 'string',
+    postgresql: {
+      columnName: 'sfid',
+      dataType: 'character varying',
+      dataLength: 53,
+      dataPrecision: null,
+      dataScale: null,
+      nullable: 'YES',
     },
   })
-  SfId?: string;
+  SfId?: string;*/
 
   constructor(data?: Partial<Account>) {
     super(data);
