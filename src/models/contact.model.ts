@@ -296,6 +296,10 @@ export class Contact extends Entity {
   })
   MailingCity?: string;
 
+  // @property({
+  //   type: 'number',
+  // })
+  // AccountId?: number;
   @property({
     type: 'string',
     postgresql: {
@@ -452,8 +456,8 @@ export class Contact extends Entity {
   })
   SfId?: string;
 
-  // @belongsTo(() => Account)
-  // accountId: number;
+  // @belongsTo(() => Account, {name: 'contacts', keyFrom: 'SfId'})
+  // AccountId: number;
 
   constructor(data?: Partial<Contact>) {
     super(data);
