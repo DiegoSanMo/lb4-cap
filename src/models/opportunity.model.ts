@@ -128,6 +128,10 @@ export class Opportunity extends Entity {
   })
   Amount?: number;
 
+  // @property({
+  //   type: 'number',
+  // })
+  // AccountId?: number;
   @property({
     type: 'date',
     postgresql: {

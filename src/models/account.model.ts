@@ -1,5 +1,6 @@
 import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Contact} from './contact.model';
+import {Opportunity} from './opportunity.model';
 
 @model({
   settings: {
@@ -482,6 +483,9 @@ export class Account extends Entity {
 
   @hasMany(() => Contact, {keyTo: 'AccountId', keyFrom: 'SfId'})
   contacts: Contact[];
+
+  @hasMany(() => Opportunity, {keyTo: 'AccountId', keyFrom: 'SfId'})
+  opportunities: Opportunity[];
 
   constructor(data?: Partial<Account>) {
     super(data);
