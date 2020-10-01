@@ -8,3 +8,4 @@ export * from './ping.controller';
 // export * from './contact-account.controller';
 export * from './account-contact.controller';
 export * from './account-opportunity.controller';
+export * from './cap-user-c-cap-file-c.controller';

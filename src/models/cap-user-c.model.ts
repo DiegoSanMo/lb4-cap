@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
+import {CapFileC} from './cap-file-c.model';
 
 @model({
   settings: {
@@ -127,6 +128,9 @@ export class CapUserC extends Entity {
     },
   })
   SfId?: string;
+
+  @hasMany(() => CapFileC, {keyTo: 'SACAP__CAP_User__c', keyFrom: 'SfId'})
+  capUserFiles: CapFileC[];
 
   constructor(data?: Partial<CapUserC>) {
     super(data);
